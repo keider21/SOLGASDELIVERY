@@ -9,17 +9,7 @@ class SolgasApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'SOLGAS DELIVERY',
-      theme: ThemeData(
-        primaryColor: Color(0xFF003366),
-        scaffoldBackgroundColor: Colors.grey[100],
-        fontFamily: 'Roboto',
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: Color(0xFF003366),
-          secondary: Color(0xFFFF6600),
-        ),
-      ),
-      home: ProductListPage(),
+      home: ProductPage(),
     );
   }
 }
@@ -30,125 +20,171 @@ class Product {
   final double price;
   final String image;
 
-  Product(this.name, this.description, this.price, this.image);
+  Product({
+    required this.name,
+    required this.description,
+    required this.price,
+    required this.image,
+  });
 }
 
-class ProductListPage extends StatelessWidget {
+class ProductPage extends StatelessWidget {
   final List<Product> products = [
-    Product("Balón de Gas Premium 10kg",
-        "Gas de alta pureza, mejor rendimiento", 65.0, "assets/images/10kg.png"),
-    Product("Balón de Gas Premium 45kg",
-        "Gas de alta pureza, mejor rendimiento", 270.0, "assets/images/45kg.png"),
-    Product("Balón de Gas Normal 10kg",
-        "Uso doméstico y económico", 65.0, "assets/images/10kg.png"),
-    Product("Balón de Gas Normal 45kg",
-        "Uso industrial y doméstico prolongado", 270.0, "assets/images/45kg.png"),
+    Product(
+      name: "Balón de Gas Premium 10kg",
+      description: "Gas de alta pureza, mejor rendimiento",
+      price: 65,
+      image: "assets/images/10kg.png",
+    ),
+    Product(
+      name: "Balón de Gas Premium 45kg",
+      description: "Gas de alta pureza, mayor duración",
+      price: 270,
+      image: "assets/images/45kg.png",
+    ),
+    Product(
+      name: "Balón de Gas Normal 10kg",
+      description: "Uso doméstico y económico",
+      price: 65,
+      image: "assets/images/10kg.png",
+    ),
+    Product(
+      name: "Balón de Gas Normal 45kg",
+      description: "Uso industrial y prolongado",
+      price: 270,
+      image: "assets/images/45kg.png",
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xFF003366), Color(0xFF005599)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(30),
-                bottomRight: Radius.circular(30),
-              ),
+      backgroundColor: Colors.grey[100],
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(80),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blue[900]!, Colors.lightBlueAccent],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
+          ),
+          child: SafeArea(
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset("assets/images/logo.png", height: 40),
-                SizedBox(width: 12),
+                Image.asset("assets/images/logo.png", height: 50),
+                SizedBox(width: 10),
                 Text(
                   "SOLGAS DELIVERY",
                   style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold),
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.5,
+                  ),
                 ),
               ],
             ),
           ),
-          Expanded(
-            child: ListView.builder(
-              padding: EdgeInsets.all(15),
-              itemCount: products.length,
-              itemBuilder: (context, index) {
-                final product = products[index];
-                return Card(
-                  elevation: 8,
-                  shadowColor: Colors.black26,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+        ),
+      ),
+      body: ListView.builder(
+        padding: EdgeInsets.all(15),
+        itemCount: products.length,
+        itemBuilder: (context, index) {
+          final product = products[index];
+          return Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18),
+            ),
+            elevation: 6,
+            margin: EdgeInsets.symmetric(vertical: 10),
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Row(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.asset(
+                      product.image,
+                      height: 80,
+                      width: 80,
+                      fit: BoxFit.contain,
+                    ),
                   ),
-                  margin: EdgeInsets.symmetric(vertical: 12),
-                  child: Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Row(
+                  SizedBox(width: 15),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Image.asset(product.image,
-                              height: 80, width: 80, fit: BoxFit.cover),
-                        ),
-                        SizedBox(width: 15),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(product.name,
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xFF003366))),
-                              SizedBox(height: 5),
-                              Text(product.description,
-                                  style: TextStyle(color: Colors.grey[700])),
-                              SizedBox(height: 10),
-                              Text("S/ ${product.price.toStringAsFixed(2)}",
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.green[700])),
-                            ],
+                        Text(
+                          product.name,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87,
                           ),
                         ),
-                        ElevatedButton.icon(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFFFF6600),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 12),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12)),
+                        SizedBox(height: 5),
+                        Text(
+                          product.description,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey[700],
                           ),
-                          onPressed: () {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                backgroundColor: Color(0xFF003366),
-                                content: Text(
-                                    "Pedido confirmado: ${product.name}",
-                                    style: TextStyle(color: Colors.white))));
-                          },
-                          icon: Icon(Icons.shopping_cart, color: Colors.white),
-                          label: Text("Pedir",
-                              style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.bold)),
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          "S/ ${product.price.toStringAsFixed(2)}",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.green[700],
+                          ),
                         ),
                       ],
                     ),
                   ),
-                );
-              },
+                  ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.orange,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                    ),
+                    onPressed: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: Colors.blue[900],
+                          content: Text("Pedido confirmado: ${product.name}",
+                              style: TextStyle(color: Colors.white)),
+                        ),
+                      );
+                    },
+                    icon: Icon(Icons.shopping_cart, color: Colors.white, size: 18),
+                    label: Text("Pedir", style: TextStyle(color: Colors.white)),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          );
+        },
+      ),
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.all(15),
+        color: Colors.blueGrey[900],
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Text("📞 987 654 321",
+                style: TextStyle(color: Colors.white, fontSize: 14)),
+            Text("💬 WhatsApp",
+                style: TextStyle(color: Colors.white, fontSize: 14)),
+          ],
+        ),
       ),
     );
   }
