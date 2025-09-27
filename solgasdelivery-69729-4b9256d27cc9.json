@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "solgasdelivery-69729",
+  "private_key_id": "4b9256d27cc96995e07f74a8ff7916047b06832c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDCmPLOrjHtmH50\nyMZlXR10f7ucfVgiQR2wTswH6KJczUYkZfbvgKaripw7v8eMoD+N4hMwCSI61bF5\nJT1g60gGVzF2vX4lPP7uOTt+pAQfjCj8SyUfFWje5rKzDgQsfekeD6B+rqt9A3aq\nENQ6apIRwGdllqwqu19TXtVWxJTs2Le3cHmLOEnMEEcddZkta4m3iQy2ZcUpK6Wl\nEewx8QrkT+QFJD9bm5Yqq2ayIQ0sGIL8+s3RNf0M8YJqrarKslsvtANmoSDcf2/s\njKXoWCtBThHXdVVjk6Ld/0/7mBE/OUe9fFgMofmu4u4tVm/daWGEW8XHCoeUq5V+\nSxGpsVJ/AgMBAAECggEAU9hNygKhLZPGbLAzV2pa7h65KdCSAFRZI+WXoJK6Hk0t\n+zHZx1EBvyi+bzoPE0bai1oM1WYiEwKO8Lk8bH2Dr4OzIsu7xfS1jNQpD8RAqI0d\n/bKtAGsbn+r7tQ2Fe9wWbObjyqGc7wTmhJkysCbJ4A8sHcfhT5ojFQtn1XZnCnMH\nwYhFS8G9fKOJGyq4dhGa5LyqfkLzTRM4GSepdh3iXYgMMJmeszeQ4yiiiz3UyzCn\n427Qwk8FFcF/Uo+XRDmaYga4jhWJAerecsw/R/WH77NAInXKP46jh70n/T0Wjhw6\nMfV9LPABECQkD85e88JahwJ08HDugjDN+HoU0t73TQKBgQDg3uh513EmDYSe8k0L\nUyOEBGxQAIFkV/u3UPw6AFENLx2pmtAyXxmVv8V30sGDRYPkOjH/e+L63sfpdR/a\nIlxxQ5GNiUIGU8sdjvt8fg8Vn1kA1kyWiL1eNrdkghXB0nPu+o3HHAD3/2AiOXJG\nZKYuNjYlkw3dFevWEORdWMzXxQKBgQDdiTMHml2dO9m4vm1rACBnhKvdJ1k6kCcD\nVd5OeY9qArAymor15G5F7cPcg9344s8/voookffsffb/6o2fKLqYQ57DVcoNzkqQ\nY4RednehTPr5cdmGeZsI8jbD1IV/sd1Rokihdpz0P58d7XWmcLRiUEFEs4cuQjZ4\nNQh6qCwhcwKBgBSJJs/hteqUt3TQieqr2AV5Ze7UbPyd8FXoZnBhkQVUNTBE/Bht\niOedEMqFi7iSQ543FlPPm4XvjHAsixEfrDOHySYUz9vGETmM0jinRndiCv3BlFL2\n/9w3wP3Dx3rg3keHyCTT0N7VCpF1j5MQJAD6YG2EBXMYSmZNOp2vu11FAoGAPMgQ\n3SwoNSSfpsVwheQCAATxlnreS2gTnCGqHcPSalaUez3VlIN5EeybSVxQwaGRFT80\n7s6lxBgHdc2nz5xAHdinrZZTGpiX8qerQLOmPPY/AcOP2ApzU/AIwJAFlLR7MZOh\n89L0Wzs9b9uf5OuVQkgcsDnFhBaclTyPt/9+JCsCgYAn36m6F2qjrJ514VCO4zbl\nVhUAyFeGcHRinIjwr+sn4KcPBPeIYUC3Mofo+S3WJQwshaJJ0rxfBWGPrIJGvMe6\n5jIckesEMqiAbhl/rRIZQhvhMbyHsP6LPWggpxSE+JV4sRi4JD6zg+elubxbu0zo\nTtZRAvkg4bFTu/qk3cafpw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@solgasdelivery-69729.iam.gserviceaccount.com",
+  "client_id": "116867916170947778832",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40solgasdelivery-69729.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "745838882023",
+    "project_id": "solgasdelivery-69729",
+    "storage_bucket": "solgasdelivery-69729.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:745838882023:android:388643c95b255c6668c642",
+        "android_client_info": {
+          "package_name": "com.example.gas_delivery_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCHKtRDGxv7JA5FsjkwUC9rLFlFYtSWsU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
