@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         useMaterial3: true,
       ),
-      routerConfig: router,
+      routerConfig: appRouter,
     );
   }
 }
