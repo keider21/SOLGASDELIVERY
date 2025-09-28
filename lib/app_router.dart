@@ -8,12 +8,12 @@ import 'pages/profile_page.dart';
 import 'pages/order_page.dart';
 import 'pages/order_history_page.dart';
 import 'pages/product_page.dart';
-import 'widgets/admin_page.dart';
+import 'pages/admin_page.dart';
 
 /// Configuración de rutas con GoRouter
 GoRouter buildRouter() {
   return GoRouter(
-    initialLocation: '/auth', // 👉 Cambia a /home si quieres entrar directo
+    initialLocation: '/auth',
     routes: [
       GoRoute(
         path: '/auth',
