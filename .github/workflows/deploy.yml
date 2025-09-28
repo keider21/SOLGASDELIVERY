@@ -1,32 +1,39 @@
-name: Deploy Flutter Web to GitHub Pages
+name: Deploy Flutter Web to Firebase Hosting
 
 on:
   push:
     branches:
-      - main  # se ejecuta cuando haces push a main
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Clonar el repo
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      # 2. Instalar Flutter
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.19.0'  # ajusta según la versión que uses
+          flutter-version: '3.19.0'
           channel: 'stable'
 
+      # 3. Instalar dependencias
       - name: Install dependencies
         run: flutter pub get
 
+      # 4. Compilar Flutter Web
       - name: Build Flutter Web
-        run: flutter build web --release --base-href /SOLGASDELIVERY/
+        run: flutter build web --release --base-href "/"
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      # 5. Deploy a Firebase Hosting
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/web
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+          channelId: live
+          projectId: tu-proyecto-firebase
