@@ -1,16 +1,1 @@
-{
-  "hosting": {
-    "public": "build/web",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  }
-}
+{"hosting":{"public":"build/web","ignore":["firebase.json","**/.*","**/node_modules/**"],"rewrites":[{"source":"**","destination":"/index.html"}]},"firestore":{"rules":"firestore.rules","indexes":"firestore.indexes.json"},"flutter":{"platforms":{"android":{"default":{"projectId":"solgasdelivery-69729","appId":"1:745838882023:android:388643c95b255c6668c642","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"solgasdelivery-69729","configurations":{"android":"1:745838882023:android:388643c95b255c6668c642","ios":"1:745838882023:ios:a17d4b68b1f18bfb68c642","macos":"1:745838882023:ios:a17d4b68b1f18bfb68c642","web":"1:745838882023:web:99a53b504e8c1e9268c642","windows":"1:745838882023:web:ff46d62a49ed721668c642"}}}}}}
