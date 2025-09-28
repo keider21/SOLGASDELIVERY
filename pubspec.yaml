@@ -21,6 +21,7 @@ dependencies:
   google_fonts: ^6.2.1
   flutter_launcher_icons: ^0.14.1
   flutter_native_splash: ^2.4.1
+  go_router: ^14.1.4   # 👈 añadido para el router
 
 dev_dependencies:
   flutter_test:
