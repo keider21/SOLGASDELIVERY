@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 
 // Importamos las pantallas desde /pages
 import 'pages/home_page.dart';
-import 'pages/login_page.dart';
+import 'pages/auth_page.dart';
 
 GoRouter buildRouter() {
   return GoRouter(
@@ -15,7 +15,7 @@ GoRouter buildRouter() {
       ),
       GoRoute(
         path: '/login',
-        builder: (context, state) => const LoginPage(),
+        builder: (context, state) => const AuthPage(),
       ),
     ],
   );
