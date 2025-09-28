@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'home_page.dart';
+// Importamos las pantallas desde /pages
+import 'pages/home_page.dart';
+import 'pages/login_page.dart';
 
 GoRouter buildRouter() {
   return GoRouter(
@@ -10,6 +12,10 @@ GoRouter buildRouter() {
       GoRoute(
         path: '/',
         builder: (context, state) => const HomePage(),
+      ),
+      GoRoute(
+        path: '/login',
+        builder: (context, state) => const LoginPage(),
       ),
     ],
   );
