@@ -8,7 +8,6 @@ import 'pages/profile_page.dart';
 import 'pages/order_page.dart';
 import 'pages/order_history_page.dart';
 import 'pages/product_page.dart';
-import 'pages/admin_page.dart';
 
 /// Configuración de rutas con GoRouter
 GoRouter buildRouter() {
@@ -38,10 +37,6 @@ GoRouter buildRouter() {
       GoRoute(
         path: '/products',
         builder: (context, state) => const ProductPage(),
-      ),
-      GoRoute(
-        path: '/admin',
-        builder: (context, state) => const AdminPage(),
       ),
     ],
   );
