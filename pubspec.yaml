@@ -1,41 +1,31 @@
 name: solgasdelivery
-description: Proyecto Flutter para delivery con Firebase
-publish_to: "none" # No lo publiques en pub.dev
+description: A new Flutter project.
+
+publish_to: 'none'
+
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=3.3.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
-  # Firebase
-  firebase_core: ^2.24.2
-  firebase_auth: ^4.17.4
-  cloud_firestore: ^4.13.5
-  firebase_storage: ^11.5.5
-
-  # UI y utilidades
-  cupertino_icons: ^1.0.8
-
-  # 🔹 Aquí tus dependencias normales
+  cupertino_icons: ^1.0.6
   firebase_core: ^3.6.0
   firebase_auth: ^5.3.1
-  cloud_firestore: ^5.2.1
-  flutter_launcher_icons: ^0.13.1
-  flutter_native_splash: ^2.4.1   # 👈 bajado para compatibilidad
+  cloud_firestore: ^5.4.4
+  firebase_storage: ^12.3.2
+  firebase_messaging: ^15.1.3
+  provider: ^6.1.2
+  google_fonts: ^6.2.1
+  flutter_launcher_icons: ^0.14.1
+  flutter_native_splash: ^2.4.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
 
-  # Splash screen (versión compatible con flutter_test)
-  flutter_native_splash: ^2.3.10
-
 flutter:
   uses-material-design: true
-
-  assets:
-    - assets/
