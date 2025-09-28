@@ -3,7 +3,7 @@ name: Deploy Flutter Web to Firebase Hosting
 on:
   push:
     branches:
-      - main
+      - main  # se ejecuta cuando haces push a main
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.3'
+          flutter-version: '3.24.3'   # versión estable recomendada
 
       - name: Install dependencies
         run: flutter pub get
@@ -27,7 +27,7 @@ jobs:
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"          
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"  
           channelId: live
-          projectId: solgasdelivery
+          projectId: solgasdelivery-69729
