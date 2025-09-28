@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'main_page.dart'; // Asegúrate que existe y es tu página principal
+import 'home_page.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -12,66 +12,70 @@ class AuthPage extends StatefulWidget {
 class _AuthPageState extends State<AuthPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  bool isLogin = true;
 
-  Future<void> login() async {
+  Future<void> signInOrRegister() async {
     try {
-      // ✅ Intentar login
-      UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim(),
-      );
-
-      // ✅ Si login es exitoso, navegar al MainPage
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const MainPage()),
-      );
-    } on FirebaseAuthException catch (e) {
-      // ❌ Mostrar error en pantalla
-      String errorMsg = "Error desconocido";
-      if (e.code == 'user-not-found') {
-        errorMsg = "Usuario no encontrado";
-      } else if (e.code == 'wrong-password') {
-        errorMsg = "Contraseña incorrecta";
+      if (isLogin) {
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+        );
       } else {
-        errorMsg = e.message ?? "Error de autenticación";
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+        );
       }
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(errorMsg)),
-      );
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const HomePage()),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Error: $e")),
+        );
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text(isLogin ? "Iniciar sesión" : "Registrarse")),
       body: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
               controller: emailController,
-              decoration: const InputDecoration(labelText: "Correo"),
+              decoration: const InputDecoration(labelText: "Correo electrónico"),
             ),
             TextField(
               controller: passwordController,
               decoration: const InputDecoration(labelText: "Contraseña"),
               obscureText: true,
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: login,
-              child: const Text("Entrar"),
+              onPressed: signInOrRegister,
+              child: Text(isLogin ? "Ingresar" : "Registrarse"),
             ),
             TextButton(
               onPressed: () {
-                // Aquí luego se conecta el registro
+                setState(() {
+                  isLogin = !isLogin;
+                });
               },
-              child: const Text("¿No tienes cuenta? Regístrate"),
-            )
+              child: Text(isLogin
+                  ? "¿No tienes cuenta? Regístrate aquí"
+                  : "¿Ya tienes cuenta? Inicia sesión"),
+            ),
           ],
         ),
       ),
