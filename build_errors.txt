@@ -1,3 +1,0 @@
-[   +8 ms] Error: Failed to compile application for the Web.
-[   +2 ms] Target dart2js failed: ProcessException: Process exited abnormally with exit code -15:
-[   +8 ms] Error: Failed to compile application for the Web.
