@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:go_router/go_router.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -23,41 +22,34 @@ class _AuthPageState extends State<AuthPage> {
     });
 
     try {
-      final auth = FirebaseAuth.instance;
       if (_isLogin) {
-        await auth.signInWithEmailAndPassword(
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim(),
         );
       } else {
-        await auth.createUserWithEmailAndPassword(
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim(),
         );
-      }
-
-      if (mounted) {
-        context.go('/home');
       }
     } on FirebaseAuthException catch (e) {
       setState(() {
         _error = e.message;
       });
     } finally {
-      if (mounted) {
-        setState(() {
-          _loading = false;
-        });
-      }
+      setState(() {
+        _loading = false;
+      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(_isLogin ? 'Iniciar sesión' : 'Registrarse')),
+      appBar: AppBar(title: Text(_isLogin ? 'Iniciar Sesión' : 'Registrarse')),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -73,8 +65,11 @@ class _AuthPageState extends State<AuthPage> {
             ),
             const SizedBox(height: 20),
             if (_error != null)
-              Text(_error!, style: const TextStyle(color: Colors.red)),
-            const SizedBox(height: 12),
+              Text(
+                _error!,
+                style: const TextStyle(color: Colors.red),
+              ),
+            const SizedBox(height: 20),
             _loading
                 ? const CircularProgressIndicator()
                 : ElevatedButton(
@@ -87,10 +82,12 @@ class _AuthPageState extends State<AuthPage> {
                   _isLogin = !_isLogin;
                 });
               },
-              child: Text(_isLogin
-                  ? '¿No tienes cuenta? Regístrate aquí'
-                  : '¿Ya tienes cuenta? Inicia sesión'),
-            ),
+              child: Text(
+                _isLogin
+                    ? '¿No tienes cuenta? Regístrate'
+                    : '¿Ya tienes cuenta? Inicia sesión',
+              ),
+            )
           ],
         ),
       ),
