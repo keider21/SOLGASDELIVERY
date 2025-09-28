@@ -6,20 +6,51 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = FirebaseAuth.instance.currentUser;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('SOLGAS DELIVERY'),
-        actions: [
-          IconButton(
-            tooltip: 'Cerrar sesión',
-            onPressed: () => FirebaseAuth.instance.signOut(),
-            icon: const Icon(Icons.logout),
-          ),
-        ],
+      appBar: AppBar(title: const Text("SOLGAS DELIVERY")),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(color: Colors.blue),
+              child: Text("SOLGAS DELIVERY", style: TextStyle(color: Colors.white, fontSize: 20)),
+            ),
+            ListTile(
+              leading: const Icon(Icons.shopping_cart),
+              title: const Text("Productos"),
+              onTap: () {
+                Navigator.pushNamed(context, '/products');
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.history),
+              title: const Text("Historial de pedidos"),
+              onTap: () {
+                Navigator.pushNamed(context, '/orders');
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text("Perfil"),
+              onTap: () {
+                Navigator.pushNamed(context, '/profile');
+              },
+            ),
+            const Divider(),
+            ListTile(
+              leading: const Icon(Icons.logout, color: Colors.red),
+              title: const Text("Cerrar sesión"),
+              onTap: () async {
+                await FirebaseAuth.instance.signOut();
+                Navigator.of(context).pushReplacementNamed('/auth');
+              },
+            ),
+          ],
+        ),
       ),
-      body: Center(
-        child: Text('Bienvenido ${user?.email ?? ''}'),
+      body: const Center(
+        child: Text("Bienvenido"),
       ),
     );
   }
